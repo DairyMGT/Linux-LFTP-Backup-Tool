@@ -7,7 +7,7 @@ from backupTracker import backupTracker
 
 #helper methods
 def executeCommand(command, filename=None):
-    command += "sudo " + command
+    # command += "sudo " + command
     print("executing: ", command)
 
     os.system(command)
