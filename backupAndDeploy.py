@@ -1,4 +1,3 @@
-# import packages
 import json
 import os
 from datetime import date
@@ -43,10 +42,10 @@ readyToDeploy = True
 removeFiles=[]
 
 # create folders if doesn't exist
-if((os.path.isdir(deploymentDir)) != True):
+if((os.path.exists(deploymentDir)) != True and os.path.exists(deploy)):
     os.mkdir(deploymentDir)
-    os.mkdir(deploymentDir + "/sqlDumps")
-    os.mkdir(deploymentDir + "/compressedDirs")
+    os.mkdir(deploymentDir + "sqlDumps")
+    os.mkdir(deploymentDir + "compressedDirs")
 
 
 if (deploymentDir):  # if folder exists, start packaging
