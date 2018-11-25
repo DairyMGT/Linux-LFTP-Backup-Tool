@@ -40,15 +40,15 @@ deployFiles = []
 dateFormat = str(date.today().year) + str(date.today().month) + str(date.today().day)
 readyToDeploy = True
 removeFiles=[]
+neededDirectories = [deploymentDir, deploymentDir + "sqlDumps", deploymentDir + "compressedDirs"]
 
 # create folders if doesn't exist
-if((os.path.exists(deploymentDir)) != True and os.path.exists(deploy)):
-    os.mkdir(deploymentDir)
-    os.mkdir(deploymentDir + "sqlDumps")
-    os.mkdir(deploymentDir + "compressedDirs")
+for dir in neededDirectories:
+    if((os.path.exists(dir)) != True):
+        os.mkdir(dir)
 
 
-if (deploymentDir):  # if folder exists, start packaging
+if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     # package directory tars
     filename = deploymentDir + "compressedDirs/"+ dateFormat + "_site.tar.gz"  # format filename and command
