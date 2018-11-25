@@ -8,7 +8,7 @@ from backupTracker import backupTracker
 #helper methods
 def executeCommand(command, filename=None):
     print("executing: ", command)
-    # TODO: execute packaging command in terminal
+    os.system("sudo", command)
 
     if (filename !=None & os.path.exists( filename)):  # If filename parameter was passed
         deployFiles.append(filename)    # add to deployment list
@@ -88,8 +88,6 @@ if (deploymentDir):  # if folder exists, start packaging
     else:
         print("LOG:: Deployment List is empty! Something went wrong")
 
-
-    #TODO: Remove old files
     removeFiles = backupTracker(deployFiles)
 
     if (len(deployFiles) > 0):
@@ -98,7 +96,7 @@ if (deploymentDir):  # if folder exists, start packaging
     else:
         print("LOG:: Remove File List is empty")
     command += "'"
-    
+
     if(readyToDeploy):
         if(executeCommand(command)):
             print("LOG:: LFTP Deployment: SUCCEEDED")

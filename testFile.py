@@ -36,17 +36,5 @@ print(BASE_DIR)
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 deploymentHistoryList = BASE_DIR + "/deploymentHistoryList.json"
 
-if ((os.path.isdir(deploymentHistoryList)) != True):
-    data={'head': "0",
-          'tail': "0",
-          'packages':{
-              #0: ['', '', ''] # compressed and dummp file names, date
-          },
-          }
-
-    with open('deploymentHistoryList.json', 'w') as outfile:
-        json.dump(data, outfile, indent=4)
-
-
 
 bt = backupTracker(["abc", "cbd"])
