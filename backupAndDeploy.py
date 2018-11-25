@@ -12,7 +12,7 @@ def executeCommand(command, filename=None):
 
     os.system(command)
 
-    if (filename !=None & os.path.exists( filename)):  # If filename parameter was passed
+    if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
         deployFiles.append(filename)    # add to deployment list
         return True
     else:
@@ -43,10 +43,10 @@ readyToDeploy = True
 removeFiles=[]
 
 # create folders if doesn't exist
-# if((os.path.isdir(deploymentDir)) != True):
-#     os.mkdir(deploymentDir)
-#     os.mkdir(deploymentDir + "/sqlDumps")
-#     os.mkdir(deploymentDir + "/compressedDirs")
+if((os.path.isdir(deploymentDir)) != True):
+    os.mkdir(deploymentDir)
+    os.mkdir(deploymentDir + "/sqlDumps")
+    os.mkdir(deploymentDir + "/compressedDirs")
 
 
 if (deploymentDir):  # if folder exists, start packaging

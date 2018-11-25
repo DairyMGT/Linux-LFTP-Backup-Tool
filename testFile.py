@@ -22,7 +22,7 @@ print(len(data['includeDir']))
 
 def f(first, second=None):
   print(first, second)
-  if(second):
+  if(second and os.path.exists("bac")):
     print(second)
 
 
