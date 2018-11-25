@@ -45,8 +45,8 @@ removeFiles=[]
 # create folders if doesn't exist
 if((os.path.isdir(deploymentDir)) != True):
     os.mkdir(deploymentDir)
-    os.mkdir(deploymentDir + "/sqlDumps")
-    os.mkdir(deploymentDir + "/compressedDirs")
+    os.mkdir(deploymentDir + "sqlDumps")
+    os.mkdir(deploymentDir + "compressedDirs")
 
 
 if (deploymentDir):  # if folder exists, start packaging
@@ -60,6 +60,8 @@ if (deploymentDir):  # if folder exists, start packaging
 
     for x in includeDir:  # included directories
         command += " " + x
+
+    print("COMAND: "+ command)
 
     if (executeCommand(command, filename)):  # Executing command
         readyToDeploy = True
@@ -114,3 +116,4 @@ else:
 # deploy files to host
 if (readyToDeploy):
     print("Deploying")
+    #TODO: deploy command
