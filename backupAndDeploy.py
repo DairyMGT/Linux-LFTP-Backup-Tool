@@ -7,7 +7,9 @@ from backupTracker import backupTracker
 
 #helper methods
 def executeCommand(command, filename=None):
+    command += "sudo " + command
     print("executing: ", command)
+    
     os.system("sudo", command)
 
     if (filename !=None & os.path.exists( filename)):  # If filename parameter was passed
