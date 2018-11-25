@@ -2,12 +2,26 @@ import json
 import os
 from datetime import date
 from backupTracker import backupTracker
+import logging
 
+#logging object
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+# create a file handler
+handler = logging.FileHandler('log.log')
+handler.setLevel(logging.INFO)
+# create a logging format
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+# add the handlers to the logger
+logger.addHandler(handler)
+logger.info('')
+logger.info('Starting logging!')
 
 #helper methods
 def executeCommand(command, filename=None):
-    # command += "sudo " + command
-    print("executing: ", command)
+
+    logger.info("executing: "+ command)
 
     os.system(command)
 
@@ -45,6 +59,7 @@ neededDirectories = [deploymentDir, deploymentDir + "sqlDumps", deploymentDir + 
 # create folders if doesn't exist
 for dir in neededDirectories:
     if((os.path.exists(dir)) != True):
+        logger.info("creating dir: " + dir)
         os.mkdir(dir)
 
 
@@ -52,7 +67,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     # package directory tars
     filename = deploymentDir + "compressedDirs/"+ dateFormat + "_site.tar.gz"  # format filename and command
-    command = "tar -czvf " + filename
+    command = "tar -czf " + filename
 
     for x in excludeDir:  # excluded directories
         command += " --exclude=" + x
@@ -64,7 +79,8 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     if (executeCommand(command, filename)):  # Executing command
         readyToDeploy = True
-        print("::LOG:: Directory Compression: SUCCEEDED")
+        logger.info("Directory Compression: SUCCEEDED: " )
+
     else:
         readyToDeploy = False
         print("::LOG:: Directory Compression: FAILED")
@@ -75,10 +91,10 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     if (executeCommand(command, filename)):  # Executing command
         readyToDeploy = True
-        print("LOG:: MySql Dump: SUCCEEDED")
+        logger.info(" MySql Dump: SUCCEEDED")
     else:
         readyToDeploy = False
-        print("LOG:: MySql Dump: FAILED")
+        logger.warning(" MySql Dump: FAILED")
 
     # deploying to box and managing:
     command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir"+ftpDir+"; cd "+ftpDir+"; "
@@ -89,7 +105,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
         for package in deployFiles:
             command += "put " + package + "; "
     else:
-        print("LOG:: Deployment List is empty! Something went wrong")
+        logger.warning(" Deployment List is empty! Something went wrong")
 
     removeFiles = backupTracker(deployFiles)
 
@@ -97,21 +113,22 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
         for removeFile in removeFiles:
             command += "rm "+ removeFile+"; "
     else:
-        print("LOG:: Remove File List is empty")
+        logger.warning(" Remove File List is empty")
     command += "'"
 
     if(readyToDeploy):
         if(executeCommand(command)):
-            print("LOG:: LFTP Deployment: SUCCEEDED")
+            logger.info(" LFTP Deployment: SUCCEEDED")
         else:
-            print("LOG:: LFTP Deployment: FAILED")
+            logger.warning(" LFTP Deployment: FAILED")
     else:
-        print("LOG:: LFTP Deployment: FAILED")
+        logger.warning(" LFTP Deployment: FAILED")
 
 
 else:
-    print(deploymentDir, " does not exist nor was created. Something went wrong. Check permission and location of deployentDir in config.json")
-
+    print()
+    logger.warning(deploymentDir+ " does not exist nor was created. Something went wrong. "
+                                  "Check permission and location of deployentDir in config.json")
 # deploy files to host
 if (readyToDeploy):
     print("Deploying")
