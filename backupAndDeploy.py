@@ -2,6 +2,7 @@
 import json
 import os
 from datetime import date
+from backupTracker import backupTracker
 
 
 #helper methods
@@ -37,6 +38,7 @@ filename = ""
 deployFiles = []
 dateFormat = str(date.today().year) + str(date.today().month) + str(date.today().day)
 readyToDeploy = True
+removeFiles=[]
 
 # create folders if doesn't exist
 # if((os.path.isdir(deploymentDir)) != True):
@@ -88,8 +90,15 @@ if (deploymentDir):  # if folder exists, start packaging
 
 
     #TODO: Remove old files
+    removeFiles = backupTracker(deployFiles)
 
-    command += " '"
+    if (len(deployFiles) > 0):
+        for removeFile in removeFiles:
+            command += "rm "+ removeFile+"; "
+    else:
+        print("LOG:: Remove File List is empty")
+    command += "'"
+    
     if(readyToDeploy):
         if(executeCommand(command)):
             print("LOG:: LFTP Deployment: SUCCEEDED")
