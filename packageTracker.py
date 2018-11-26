@@ -2,7 +2,8 @@ import json
 import os
 from datetime import datetime as dt
 
-class backupTracker:
+class packageTracker:
+    removeFiles = []
     def __init__(self, newfilenames):
         BASE_DIR = os.path.dirname(os.path.realpath(__file__))
         deploymentHistoryList = BASE_DIR + "/deploymentHistoryList.json"
@@ -34,13 +35,19 @@ class backupTracker:
         self.tail = int(data['tail'])
         self.filenames = data['deployedFilenames'] # compressed and dump file names, date
         self.packageTime = str(dt.now())
+        self.removeFiles = []
 
         self.add(newfilenames)
 
         if(self.tail - self.head > self.incrementalNum):
             self.remove()
+
         self.saveFile()
 
+
+
+    def getFileToRemove(self):
+        return self.removeFiles
 
     def add(self, filename):
         if(self.tail == 0):
@@ -57,7 +64,9 @@ class backupTracker:
         self.tail = self.tail + 1
 
     def remove(self):
+        self.removeFiles = self.filenames[str(self.head)]
         self.head = self.head +1
+
 
     def saveFile(self):
         data= {'head':self.head, 'tail':self.tail, 'deployedFilenames':self.filenames}

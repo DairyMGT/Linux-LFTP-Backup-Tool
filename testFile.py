@@ -1,7 +1,7 @@
 import json
 import datetime
 import os
-from backupTracker import  backupTracker
+from packageTracker import  packageTracker
 import logging
 
 with open('config.json') as json_data_file:
@@ -38,7 +38,8 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 deploymentHistoryList = BASE_DIR + "/deploymentHistoryList.json"
 
 
-bt = backupTracker(["abc", "cbd"])
+
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -56,7 +57,8 @@ handler.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(handler)
 
-logger.info('Hello baby')
-logger.info('End Run')
-logger.info('')
-logger.warn('type sick')
+bt = packageTracker(["cbc", "ebd"])
+
+remove = bt.getFileToRemove()
+
+logger.debug(remove)
