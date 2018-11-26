@@ -86,7 +86,9 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
         else:
             readyToDeploy = False
-            print("::LOG:: Directory Compression: FAILED")
+            logger.warning("::LOG:: Directory Compression: FAILED")
+    else:
+        logger.info("Not compressing directories")
 
     # package database dumps
     if(backupMySql == "True"):
@@ -99,7 +101,8 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
         else:
             readyToDeploy = False
             logger.warning(" MySql Dump: FAILED")
-
+    else:
+        logger.info("Not dumping MuSql")
     # deploying to box and managing:
     command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir"+ftpDir+"; cd "+ftpDir+"; "
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
