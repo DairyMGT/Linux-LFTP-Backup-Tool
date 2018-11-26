@@ -136,4 +136,5 @@ else:
 # deploy files to host
 if (readyToDeploy):
     print("Deploying")
+    logger.debug("Reached Deployment Stage. Can execute now.")
     #TODO: deploy command
