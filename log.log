@@ -1,0 +1,7 @@
+2018-11-26 15:47:12,975 - __main__ - INFO - 
+2018-11-26 15:47:12,975 - __main__ - INFO - Starting logging!
+2018-11-26 15:47:12,975 - __main__ - INFO - Not compressing directories
+2018-11-26 15:47:12,975 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 15:47:12,982 - __main__ - INFO - system responsone: 
+2018-11-26 15:47:12,982 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 15:47:12,983 - __main__ - WARNING -  Deployment List is empty! Something went wrong
