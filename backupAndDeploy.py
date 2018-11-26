@@ -36,6 +36,8 @@ def executeCommand(command, filename=None):
 with open('config.json') as json_data_file:
     configData = json.load(json_data_file)
 
+backupMySql = configData["backupMySql"]
+backupDir = configData["backupDir"]
 ftpHost = configData["ftp"]["host"]
 ftpUsername = configData["ftp"]["username"]
 ftpPassword = configData["ftp"]["password"]
@@ -66,35 +68,37 @@ for dir in neededDirectories:
 if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     # package directory tars
-    filename = deploymentDir + "compressedDirs/"+ dateFormat + "_site.tar.gz"  # format filename and command
-    command = "tar -czf " + filename
+    if(backupDir):
+        filename = deploymentDir + "compressedDirs/"+ dateFormat + "_site.tar.gz"  # format filename and command
+        command = "tar -czf " + filename
 
-    for x in excludeDir:  # excluded directories
-        command += " --exclude=" + x
+        for x in excludeDir:  # excluded directories
+            command += " --exclude=" + x
 
-    for x in includeDir:  # included directories
-        command += " " + x
+        for x in includeDir:  # included directories
+            command += " " + x
 
-    print("COMAND: "+ command)
+        print("COMAND: "+ command)
 
-    if (executeCommand(command, filename)):  # Executing command
-        readyToDeploy = True
-        logger.info("Directory Compression: SUCCEEDED: " )
+        if (executeCommand(command, filename)):  # Executing command
+            readyToDeploy = True
+            logger.info("Directory Compression: SUCCEEDED: " )
 
-    else:
-        readyToDeploy = False
-        print("::LOG:: Directory Compression: FAILED")
+        else:
+            readyToDeploy = False
+            print("::LOG:: Directory Compression: FAILED")
 
     # package database dumps
-    filename =  deploymentDir +"sqlDumps/" + dateFormat+ "_mysqlDump.sql"
-    command = "mysqldump -u " + mysqlUsername + " -p'" + mysqlPassword + "' --all-databases >" + deploymentDir + filename
+    if(backupMySql):
+        filename =  deploymentDir +"sqlDumps/" + dateFormat+ "_mysqlDump.sql"
+        command = "mysqldump -u " + mysqlUsername + " -p'" + mysqlPassword + "' --all-databases >" + deploymentDir + filename
 
-    if (executeCommand(command, filename)):  # Executing command
-        readyToDeploy = True
-        logger.info(" MySql Dump: SUCCEEDED")
-    else:
-        readyToDeploy = False
-        logger.warning(" MySql Dump: FAILED")
+        if (executeCommand(command, filename)):  # Executing command
+            readyToDeploy = True
+            logger.info(" MySql Dump: SUCCEEDED")
+        else:
+            readyToDeploy = False
+            logger.warning(" MySql Dump: FAILED")
 
     # deploying to box and managing:
     command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir"+ftpDir+"; cd "+ftpDir+"; "

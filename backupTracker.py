@@ -27,6 +27,8 @@ class backupTracker:
         with open('config.json') as json_data_file:
             configData = json.load(json_data_file)
 
+        self.backupMySql = configData["backupMySql"]
+        self.backupDir = configData["backupDir"]
         self.incrementalNum = configData["numberOfBackups"]
         self.head = int(data['head'])
         self.tail = int(data['tail'])
@@ -46,7 +48,12 @@ class backupTracker:
         else:
             index = self.tail +1
 
-        self.filenames[index] =filename[0], filename[1], self.packageTime
+        if(self.backupDir and self.backupMySql):
+            self.filenames[index] =filename[0], filename[1], self.packageTime
+        if (self.backupDir or self.backupMySql):
+            self.filenames[index] = filename[0], self.packageTime
+        else:
+            self.tail = self.tail - 1
         self.tail = self.tail + 1
 
     def remove(self):
