@@ -1,0 +1,35 @@
+2018-11-25 17:36:20,612 - __main__ - INFO - 
+2018-11-25 17:36:20,612 - __main__ - INFO - Starting logging!
+2018-11-25 17:36:20,612 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181125_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* /var/www/dairymgt-site/
+2018-11-25 17:36:26,031 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-25 17:36:26,032 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181125_mysqlDump.sql
+2018-11-25 17:36:26,035 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-25 17:41:15,442 - __main__ - INFO - 
+2018-11-25 17:41:15,442 - __main__ - INFO - Starting logging!
+2018-11-25 17:41:15,442 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181125_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-25 17:47:44,008 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-25 17:47:44,008 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181125_mysqlDump.sql
+2018-11-25 17:47:44,012 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 14:54:37,006 - __main__ - INFO - 
+2018-11-26 14:54:37,006 - __main__ - INFO - Starting logging!
+2018-11-26 14:54:37,007 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181126_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-26 14:54:43,572 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-26 14:54:43,573 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 14:54:43,576 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 14:56:45,900 - __main__ - INFO - 
+2018-11-26 14:56:45,900 - __main__ - INFO - Starting logging!
+2018-11-26 14:56:45,900 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181126_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-26 14:56:48,922 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-26 14:56:48,922 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 14:56:48,925 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 15:04:18,836 - __main__ - INFO - 
+2018-11-26 15:04:18,836 - __main__ - INFO - Starting logging!
+2018-11-26 15:04:18,836 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181126_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-26 15:04:43,024 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-26 15:04:43,024 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment//var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 15:04:43,027 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 15:05:11,940 - __main__ - INFO - 
+2018-11-26 15:05:11,940 - __main__ - INFO - Starting logging!
+2018-11-26 15:05:11,940 - __main__ - INFO - executing: tar -czf /var/boxBackupDeployment/compressedDirs/20181126_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-26 15:05:15,198 - __main__ - INFO - Directory Compression: SUCCEEDED: 
+2018-11-26 15:05:15,199 - __main__ - INFO - Not dumping MuSql
