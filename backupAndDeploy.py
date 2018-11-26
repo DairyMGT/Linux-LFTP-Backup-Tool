@@ -95,6 +95,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     # package database dumps
     if(backupMySql == "True"):
         filename =  deploymentDir +"sqlDumps/" + dateFormat+ "_mysqlDump.sql"
+        logger.debug(filename)
         command = "mysqldump -u " + mysqlUsername + " -p'" + mysqlPassword + "' --all-databases >" + deploymentDir + filename
 
         if (executeCommand(command, filename)):  # Executing command
