@@ -23,7 +23,9 @@ def executeCommand(command, filename=None):
 
     logger.info("executing: "+ command)
 
-    os.system(command)
+    # os.system(command)
+    sysResponse = os.popen(command).read()
+    logger.info("system responsone: "+ sysResponse)
 
     if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
         deployFiles.append(filename)    # add to deployment list
