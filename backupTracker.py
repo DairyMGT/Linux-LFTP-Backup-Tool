@@ -27,8 +27,8 @@ class backupTracker:
         with open('config.json') as json_data_file:
             configData = json.load(json_data_file)
 
-        self.backupMySql = configData["backupMySql"]
-        self.backupDir = configData["backupDir"]
+        self.backupMySql = bool(configData["backupMySql"])
+        self.backupDir = bool(configData["backupDir"])
         self.incrementalNum = configData["numberOfBackups"]
         self.head = int(data['head'])
         self.tail = int(data['tail'])

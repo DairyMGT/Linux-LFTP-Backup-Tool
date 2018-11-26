@@ -36,8 +36,8 @@ def executeCommand(command, filename=None):
 with open('config.json') as json_data_file:
     configData = json.load(json_data_file)
 
-backupMySql = configData["backupMySql"]
-backupDir = configData["backupDir"]
+backupMySql = bool(configData["backupMySql"])
+backupDir = bool(configData["backupDir"])
 ftpHost = configData["ftp"]["host"]
 ftpUsername = configData["ftp"]["username"]
 ftpPassword = configData["ftp"]["password"]
