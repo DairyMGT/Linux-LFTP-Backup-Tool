@@ -1,0 +1,27 @@
+2018-11-26 14:08:02,045 - __main__ - INFO - 
+2018-11-26 14:08:02,045 - __main__ - INFO - Starting logging!
+2018-11-26 14:08:37,952 - __main__ - INFO - 
+2018-11-26 14:08:37,952 - __main__ - INFO - Starting logging!
+2018-11-26 14:08:37,953 - __main__ - INFO - creating dir: C://var/boxBackupDeployment/
+2018-11-26 14:09:12,231 - __main__ - INFO - 
+2018-11-26 14:09:12,231 - __main__ - INFO - Starting logging!
+2018-11-26 14:09:12,232 - __main__ - INFO - creating dir: C://Temp/boxBackupDeployment/
+2018-11-26 14:09:12,233 - __main__ - INFO - creating dir: C://Temp/boxBackupDeployment/sqlDumps
+2018-11-26 14:09:12,234 - __main__ - INFO - creating dir: C://Temp/boxBackupDeployment/compressedDirs
+2018-11-26 14:09:12,235 - __main__ - INFO - executing: tar -czf C://Temp/boxBackupDeployment/compressedDirs/20181126_site.tar.gz --exclude=/var/www/dairymgt-site/tmp* --exclude=/var/www/dairymgt-site/neweWebsite/* --exclude=*/.git/* --exclude=/var/www/dairymgt-site/tools/grouping_strategy/download/* --exclude=*/tmp/* --exclude=/var/www/dairtmgt-site/tools/*/output/* --exclude=/var/www/dairymgt-site/OLDWEBSITE_6_14_2018/* /var/www/dairymgt-site/
+2018-11-26 14:09:12,271 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >C://Temp/boxBackupDeployment/C://Temp/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 14:09:12,290 - __main__ - WARNING -  MySql Dump: FAILED
+2018-11-26 14:09:12,291 - __main__ - WARNING -  Deployment List is empty! Something went wrong
+2018-11-26 14:09:43,493 - __main__ - INFO - 
+2018-11-26 14:09:43,494 - __main__ - INFO - Starting logging!
+2018-11-26 14:10:11,348 - __main__ - INFO - 
+2018-11-26 14:10:11,349 - __main__ - INFO - Starting logging!
+2018-11-26 14:10:49,902 - __main__ - INFO - 
+2018-11-26 14:10:49,903 - __main__ - INFO - Starting logging!
+2018-11-26 14:11:22,603 - __main__ - INFO - 
+2018-11-26 14:11:22,604 - __main__ - INFO - Starting logging!
+2018-11-26 14:11:39,317 - __main__ - INFO - 
+2018-11-26 14:11:39,318 - __main__ - INFO - Starting logging!
+2018-11-26 14:12:20,995 - __main__ - INFO - 
+2018-11-26 14:12:20,999 - __main__ - INFO - Starting logging!
+2018-11-26 14:12:50,839 - __main__ - WARNING -  Deployment List is empty! Something went wrong

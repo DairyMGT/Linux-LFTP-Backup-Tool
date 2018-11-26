@@ -36,8 +36,8 @@ def executeCommand(command, filename=None):
 with open('config.json') as json_data_file:
     configData = json.load(json_data_file)
 
-backupMySql = bool(configData["backupMySql"])
-backupDir = bool(configData["backupDir"])
+backupMySql = (configData["backupMySql"])
+backupDir = (configData["backupDir"])
 ftpHost = configData["ftp"]["host"]
 ftpUsername = configData["ftp"]["username"]
 ftpPassword = configData["ftp"]["password"]
@@ -68,7 +68,7 @@ for dir in neededDirectories:
 if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     # package directory tars
-    if(backupDir):
+    if(backupDir == "True"):
         filename = deploymentDir + "compressedDirs/"+ dateFormat + "_site.tar.gz"  # format filename and command
         command = "tar -czf " + filename
 
@@ -89,7 +89,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
             print("::LOG:: Directory Compression: FAILED")
 
     # package database dumps
-    if(backupMySql):
+    if(backupMySql == "True"):
         filename =  deploymentDir +"sqlDumps/" + dateFormat+ "_mysqlDump.sql"
         command = "mysqldump -u " + mysqlUsername + " -p'" + mysqlPassword + "' --all-databases >" + deploymentDir + filename
 
