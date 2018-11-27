@@ -41,3 +41,61 @@
 2018-11-26 22:29:10,953 - __main__ - INFO - Deploying command: 20181126_mysqlDump.sql
 2018-11-26 22:29:10,956 - __main__ - INFO - Create tracker object
 2018-11-26 22:29:10,956 - __main__ - INFO - Files to remove: cbc2018-11-26 21:01:13.064583
+2018-11-26 22:49:54,571 - __main__ - INFO - 
+2018-11-26 22:49:54,571 - __main__ - INFO - Starting logging!
+2018-11-26 22:49:54,572 - __main__ - INFO - Not compressing directories
+2018-11-26 22:49:54,572 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 22:49:57,978 - __main__ - INFO - system responsone: 
+2018-11-26 22:49:57,979 - __main__ - INFO -  MySql Dump: SUCCEEDED
+2018-11-26 22:49:57,979 - __main__ - INFO - Starting deploying preparation
+2018-11-26 22:49:57,979 - __main__ - INFO - Deploying command: 20181126_mysqlDump.sql
+2018-11-26 22:49:57,981 - __main__ - INFO - Create tracker object
+2018-11-26 22:49:57,981 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
+2018-11-26 22:51:11,998 - __main__ - INFO - 
+2018-11-26 22:51:11,998 - __main__ - INFO - Starting logging!
+2018-11-26 22:51:11,998 - __main__ - INFO - Not compressing directories
+2018-11-26 22:51:11,998 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 22:51:15,504 - __main__ - INFO - system responsone: 
+2018-11-26 22:51:15,505 - __main__ - INFO -  MySql Dump: SUCCEEDED
+2018-11-26 22:51:15,505 - __main__ - INFO - Starting deploying preparation
+2018-11-26 22:51:15,505 - __main__ - INFO - Deploying command: 20181126_mysqlDump.sql
+2018-11-26 22:51:15,508 - __main__ - WARNING - Create tracker object
+2018-11-26 22:51:15,509 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
+2018-11-26 22:51:15,509 - __main__ - INFO - Reached Deployment Stage. Can execute now.
+2018-11-26 22:51:15,509 - __main__ - INFO - Reached inside loop
+2018-11-26 23:17:41,326 - __main__ - INFO - 
+2018-11-26 23:17:41,326 - __main__ - INFO - Starting logging!
+2018-11-26 23:17:41,326 - __main__ - INFO - Not compressing directories
+2018-11-26 23:17:41,326 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 23:17:44,848 - __main__ - INFO - system responsone: 
+2018-11-26 23:17:44,849 - __main__ - INFO -  MySql Dump: SUCCEEDED
+2018-11-26 23:17:44,849 - __main__ - INFO - Starting deploying preparation
+2018-11-26 23:17:44,849 - __main__ - INFO - Deploying command: 20181126_mysqlDump.sql
+2018-11-26 23:17:44,852 - __main__ - WARNING - Create tracker object
+2018-11-26 23:17:44,853 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
+2018-11-26 23:17:44,853 - __main__ - INFO - Reached Deployment Stage. Can execute now.
+2018-11-26 23:17:44,853 - __main__ - INFO - executing: lftp -u 'vcabrera@wisc.edu,Dairymgt#@!1' ftp.box.com -e 'mkdirDairymgt#@!1; cd Dairymgt#@!1; put 20181126_mysqlDump.sql; rm 20181126_mysqlDump.sql; '
+2018-11-26 23:19:24,087 - __main__ - INFO - 
+2018-11-26 23:19:24,087 - __main__ - INFO - Starting logging!
+2018-11-26 23:19:24,087 - __main__ - INFO - Not compressing directories
+2018-11-26 23:19:24,087 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 23:19:27,625 - __main__ - INFO - system responsone: 
+2018-11-26 23:19:27,626 - __main__ - INFO -  MySql Dump: SUCCEEDED
+2018-11-26 23:19:27,627 - __main__ - INFO - Starting deploying preparation
+2018-11-26 23:19:27,627 - __main__ - INFO - Deploying command: 20181126_mysqlDump.sql
+2018-11-26 23:19:27,630 - __main__ - WARNING - Create tracker object
+2018-11-26 23:19:27,630 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
+2018-11-26 23:19:27,631 - __main__ - INFO - Reached Deployment Stage. Can execute now.
+2018-11-26 23:19:27,631 - __main__ - INFO - executing: lftp -u 'vcabrera@wisc.edu,Dairymgt#@!1' ftp.box.com -e 'mkdir/DairyMgt_Backups; cd /DairyMgt_Backups; put 20181126_mysqlDump.sql; rm 20181126_mysqlDump.sql; '
+2018-11-26 23:25:02,723 - __main__ - INFO - 
+2018-11-26 23:25:02,723 - __main__ - INFO - Starting logging!
+2018-11-26 23:25:02,724 - __main__ - INFO - Not compressing directories
+2018-11-26 23:25:02,724 - __main__ - INFO - executing: mysqldump -u root -p'Mysql@Dairymgt#@!1' --all-databases >/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 23:25:06,218 - __main__ - INFO - system responsone: 
+2018-11-26 23:25:06,219 - __main__ - INFO -  MySql Dump: SUCCEEDED
+2018-11-26 23:25:06,219 - __main__ - INFO - Starting deploying preparation
+2018-11-26 23:25:06,219 - __main__ - INFO - Deploying command: /var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql
+2018-11-26 23:25:06,220 - __main__ - WARNING - Create tracker object
+2018-11-26 23:25:06,220 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
+2018-11-26 23:25:06,220 - __main__ - INFO - Reached Deployment Stage. Can execute now.
+2018-11-26 23:25:06,220 - __main__ - INFO - executing: lftp -u 'vcabrera@wisc.edu,Dairymgt#@!1' ftp.box.com -e 'mkdir/DairyMgt_Backups; cd /DairyMgt_Backups; put /var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql; rm 20181126_mysqlDump.sql; '
