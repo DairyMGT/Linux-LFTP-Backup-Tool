@@ -37,15 +37,13 @@ def executeCommand(command, filename=None):
         return False
 
 def deployCommand(command):
-    connection = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+";'"
 
-    os.system(connection)
-
+    logger.info("FTP connection")
+    os.system(command)
     # sysResponse = os.popen(connection).read()
     # logger.info("FTP responsone: "+ sysResponse)
-
-    sysResponse = os.popen(connection).read()
-    logger.info("FTP responsone: "+ sysResponse)
+    # sysResponse = os.popen(connection).read()
+    # logger.info("FTP responsone: "+ sysResponse)
 
 
 
@@ -124,7 +122,8 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     logger.info("Starting deploying preparation")
 
     # deploying to box and managing:
-    command = ""
+    command = "lftp -u '" + ftpUsername + "," + ftpPassword + "' " + ftpHost + " -e 'mkdir " + ftpDir + "; cd " + ftpDir + ";'"
+
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
 
     #add deployment files
