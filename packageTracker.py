@@ -64,7 +64,13 @@ class packageTracker:
         self.tail = self.tail + 1
 
     def remove(self):
-        self.removeFiles = self.filenames[str(self.head)]
+        length = len(self.filenames[str(self.head)])
+        # print(length)
+        for i in range(length-1):
+            # print(i)
+            # print(self.filenames[str(self.head)][i])
+            self.removeFiles.append(self.filenames[str(self.head)][i])
+        # self.removeFiles = self.filenames[str(self.head)]
         self.head = self.head +1
 
 
