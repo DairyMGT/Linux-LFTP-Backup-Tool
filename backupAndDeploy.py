@@ -152,8 +152,14 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
        # logger.info("Reached inside loop")
         if(deployCommand(command)):
             logger.info(" LFTP Deployment: SUCCEEDED")
-        else:
-            logger.warning(" LFTP Deployment: FAILED")
+
+            for package in filesToRemove:
+                command = "rm " + package
+                if(executeCommand(command)==False):
+                    logger.info("Old Files Removed")
+                else:
+                    logger.info("Old files not Removed")
+
     else:
         logger.warning(" LFTP Deployment: FAILED")
 
@@ -162,3 +168,4 @@ else:
     print()
     logger.warning(deploymentDir+ " does not exist nor was created. Something went wrong. "
                                   "Check permission and location of deployentDir in config.json")
+
