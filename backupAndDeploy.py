@@ -111,7 +111,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     logger.info("Starting deploying preparation")
     
     # deploying to box and managing:
-    command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir"+ftpDir+"; cd "+ftpDir+"; "
+    command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+"; "
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
     
     #add deployment files
