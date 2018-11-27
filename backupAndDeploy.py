@@ -28,9 +28,10 @@ def executeCommand(command, filename=None):
     logger.info("system responsone: "+ sysResponse)
 
     if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
-        name = filename.split("/")
-        logging.info("File to deploy: " + name[len(name)-1])
-        deployFiles.append(name[len(name)-1])    # add to deployment list
+        #name = filename.split("/")
+        #logging.info("File to deploy: " + name[len(name)-1])
+        #deployFiles.append(name[len(name)-1])    # add to deployment list
+        deployFiles.append(filename)
         return True
     else:
         return False
@@ -45,7 +46,7 @@ backupDir = (configData["backupDir"])
 ftpHost = configData["ftp"]["host"]
 ftpUsername = configData["ftp"]["username"]
 ftpPassword = configData["ftp"]["password"]
-ftpDir = configData["ftp"]["password"]
+ftpDir = configData["ftp"]["backupDir"]
 mysqlUsername = configData["mysql"]["username"]
 mysqlPassword = configData["mysql"]["password"]
 excludeDir = configData["excludeDir"]
@@ -109,11 +110,11 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
         logger.info("Not dumping MuSql")
 
     logger.info("Starting deploying preparation")
-    
+
     # deploying to box and managing:
     command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+"; "
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
-    
+
     #add deployment files
     if(len(deployFiles) > 0):
         for package in deployFiles:
@@ -123,9 +124,9 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
         logger.warning(" Deployment List is empty! Something went wrong")
 
     queueTracker = packageTracker(deployFiles)
-    logger.info("Create tracker object")
+    logger.warning("Create tracker object")
     filesToRemove = queueTracker.getFileToRemove()
-    
+
     logger.info("Files to remove: " + "".join(filesToRemove))
     if (len(deployFiles) > 0):
         for package in filesToRemove:
@@ -133,15 +134,15 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     else:
         logger.warning(" Remove File List is empty")
     command += "exit'"
-    
-    logger.debug("Reached Deployment Stage. Can execute now.")
+
+    logger.info("Reached Deployment Stage. Can execute now.")
 
     if(readyToDeploy):
-        logger.debug("Reached inside loop")
-        # if(executeCommand(command)):
-        #     logger.info(" LFTP Deployment: SUCCEEDED")
-        # else:
-        #     logger.warning(" LFTP Deployment: FAILED")
+       # logger.info("Reached inside loop")
+        if(executeCommand(command)):
+            logger.info(" LFTP Deployment: SUCCEEDED")
+        else:
+            logger.warning(" LFTP Deployment: FAILED")
     else:
         logger.warning(" LFTP Deployment: FAILED")
 
