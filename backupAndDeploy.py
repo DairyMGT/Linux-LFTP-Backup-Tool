@@ -28,7 +28,9 @@ def executeCommand(command, filename=None):
     logger.info("system responsone: "+ sysResponse)
 
     if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
-        deployFiles.append(filename)    # add to deployment list
+        name = filename.split("/")
+        deployFiles.append(name[len(name)])    # add to deployment list
+        logging.info("File to deploy: "+name)
         return True
     else:
         return False
@@ -116,20 +118,24 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     else:
         logger.warning(" Deployment List is empty! Something went wrong")
 
-    removeFiles = backupTracker(deployFiles)
+    queueTracker = packageTracker(deployFiles)
+
+    filesToRemove = queueTracker.getFileToRemove()
 
     if (len(deployFiles) > 0):
-        for removeFile in removeFiles:
-            command += "rm "+ removeFile+"; "
+        for package in filesToRemove:
+            command += "rm " + package + "; "
     else:
         logger.warning(" Remove File List is empty")
     command += "'"
 
     if(readyToDeploy):
-        if(executeCommand(command)):
-            logger.info(" LFTP Deployment: SUCCEEDED")
-        else:
-            logger.warning(" LFTP Deployment: FAILED")
+        logger.debug("Reached Deployment Stage. Can execute now.")
+
+        # if(executeCommand(command)):
+        #     logger.info(" LFTP Deployment: SUCCEEDED")
+        # else:
+        #     logger.warning(" LFTP Deployment: FAILED")
     else:
         logger.warning(" LFTP Deployment: FAILED")
 
@@ -138,8 +144,3 @@ else:
     print()
     logger.warning(deploymentDir+ " does not exist nor was created. Something went wrong. "
                                   "Check permission and location of deployentDir in config.json")
-# deploy files to host
-if (readyToDeploy):
-    print("Deploying")
-    logger.debug("Reached Deployment Stage. Can execute now.")
-    #TODO: deploy command
