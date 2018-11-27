@@ -36,6 +36,19 @@ def executeCommand(command, filename=None):
     else:
         return False
 
+def deployCommand(command):
+    connection = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+";'"
+
+    # os.system(command)
+    sysResponse = os.popen(connection).read()
+    logger.info("FTP responsone: "+ sysResponse)
+
+
+
+    sysResponse = os.popen(connection).read()
+    logger.info("FTP responsone: "+ sysResponse)
+
+
 
 # read from config
 with open('config.json') as json_data_file:
@@ -112,7 +125,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     logger.info("Starting deploying preparation")
 
     # deploying to box and managing:
-    command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+"; "
+    command = ""
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
 
     #add deployment files
@@ -139,7 +152,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
 
     if(readyToDeploy):
        # logger.info("Reached inside loop")
-        if(executeCommand(command)):
+        if(deployCommand(command)):
             logger.info(" LFTP Deployment: SUCCEEDED")
         else:
             logger.warning(" LFTP Deployment: FAILED")
