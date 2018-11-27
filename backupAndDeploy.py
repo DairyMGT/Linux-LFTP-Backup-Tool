@@ -39,11 +39,10 @@ def executeCommand(command, filename=None):
 def deployCommand(command):
     connection = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir "+ftpDir+"; cd "+ftpDir+";'"
 
-    # os.system(command)
-    sysResponse = os.popen(connection).read()
-    logger.info("FTP responsone: "+ sysResponse)
+    os.system(connection)
 
-
+    # sysResponse = os.popen(connection).read()
+    # logger.info("FTP responsone: "+ sysResponse)
 
     sysResponse = os.popen(connection).read()
     logger.info("FTP responsone: "+ sysResponse)
