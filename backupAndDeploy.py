@@ -29,8 +29,8 @@ def executeCommand(command, filename=None):
 
     if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
         name = filename.split("/")
+        logging.info("File to deploy: " + name[len(name)])
         deployFiles.append(name[len(name)])    # add to deployment list
-        logging.info("File to deploy: "+name)
         return True
     else:
         return False
