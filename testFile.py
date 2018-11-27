@@ -62,3 +62,10 @@ bt = packageTracker(["cbc", "ebd"])
 remove = bt.getFileToRemove()
 
 logger.debug(remove)
+
+text = "/var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql"
+
+name = text.split("/")
+print(name)
+print(len(name))
+print("File to deploy: " + name[len(name)])
