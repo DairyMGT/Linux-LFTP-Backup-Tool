@@ -128,10 +128,11 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     else:
         logger.warning(" Remove File List is empty")
     command += "'"
+    
+    logger.debug("Reached Deployment Stage. Can execute now.")
 
     if(readyToDeploy):
-        logger.debug("Reached Deployment Stage. Can execute now.")
-
+        logger.debug("Reached inside loop")
         # if(executeCommand(command)):
         #     logger.info(" LFTP Deployment: SUCCEEDED")
         # else:
