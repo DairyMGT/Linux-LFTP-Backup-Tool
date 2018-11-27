@@ -132,7 +132,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
             command += "rm " + package + "; "
     else:
         logger.warning(" Remove File List is empty")
-    command += "'"
+    command += "exit'"
     
     logger.debug("Reached Deployment Stage. Can execute now.")
 
