@@ -23,9 +23,9 @@ def executeCommand(command, filename=None):
 
     logger.info("executing: "+ command)
 
-    # os.system(command)
-    sysResponse = os.popen(command).read()
-    logger.info("system responsone: "+ sysResponse)
+    os.system(command)
+    # sysResponse = os.popen(command).read()
+    # logger.info("system responsone: "+ sysResponse)
 
     if (filename !=None and os.path.exists( filename)):  # If filename parameter was passed
         #name = filename.split("/")
@@ -122,7 +122,7 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
     logger.info("Starting deploying preparation")
 
     # deploying to box and managing:
-    command = "lftp -u '" + ftpUsername + "," + ftpPassword + "' " + ftpHost + " -e 'mkdir " + ftpDir + "; cd " + ftpDir + ";'"
+    command = "lftp -u '" + ftpUsername + "," + ftpPassword + "' " + ftpHost + " -e 'mkdir " + ftpDir + "; cd " + ftpDir + ";"
 
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
 
