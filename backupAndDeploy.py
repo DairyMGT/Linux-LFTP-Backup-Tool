@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 # create a file handler
 handler = logging.FileHandler('log.log')
-handler.setLevel(logging.INFO)
+handler.setLevel(logging.DEBUG)
 # create a logging format
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
@@ -107,31 +107,37 @@ if (os.path.exists(deploymentDir)):  # if folder exists, start packaging
             logger.warning(" MySql Dump: FAILED")
     else:
         logger.info("Not dumping MuSql")
+
+    logger.info("Starting deploying preparation")
+    
     # deploying to box and managing:
     command = "lftp -u '"+ftpUsername+","+ftpPassword+"' "+ftpHost+" -e 'mkdir"+ftpDir+"; cd "+ftpDir+"; "
     #cd /DairyMgt_Backups; put /var/boxBackupDeployment/20181107_initialMySQL.sql; '"
-
+    
     #add deployment files
     if(len(deployFiles) > 0):
         for package in deployFiles:
+            logger.info("Deploying command: "+ package)
             command += "put " + package + "; "
     else:
         logger.warning(" Deployment List is empty! Something went wrong")
 
     queueTracker = packageTracker(deployFiles)
-
+    logger.info("Create tracker object")
     filesToRemove = queueTracker.getFileToRemove()
-
+    
+    logger.info("Files to remove: " + "".join(filesToRemove))
     if (len(deployFiles) > 0):
         for package in filesToRemove:
             command += "rm " + package + "; "
     else:
         logger.warning(" Remove File List is empty")
     command += "'"
+    
+    logger.debug("Reached Deployment Stage. Can execute now.")
 
     if(readyToDeploy):
-        logger.debug("Reached Deployment Stage. Can execute now.")
-
+        logger.debug("Reached inside loop")
         # if(executeCommand(command)):
         #     logger.info(" LFTP Deployment: SUCCEEDED")
         # else:
