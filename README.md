@@ -5,6 +5,12 @@
 **NOTE:**
 * This project is in an early stage. The protocol may change frequently.
 
+# Pre-requisites
+```sh
+sudo apt-get update
+sudo apt-get install python3
+sudo apt-get install lftp
+```
 
 # Usage
 
