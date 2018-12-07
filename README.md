@@ -39,6 +39,20 @@ If only Python3 is installed
 sudo python backupAndDeploy.py
 ```
 
+## 4. Schedule it to run on the weekends using crontab
+```sh
+sudo crontab -e
+```
+
+Add the following lines to run every Saturday night
+```sh
+0 0 * * 6 cd /*LOCATION OF THE PROJECT*/; python3/*LOCATION OF THE PROJECT*/backupAndDeploy.py > /var/ftpDeployment/systemOutput.log
+```
+Replace /*LOCATION OF THE PROJECT*/ with your project directory. For example: 
+```sh
+0 0 * * 6 cd /var/ftpDeployment/Auto-Linux-Server-Backup/; python3 /var/ftpDeployment/Auto-Linux-Server-Backup/backupAndDeploy.py > /var/ftpDeployment/systemOutput.log
+```
+
 ## License
 
     Copyright [2018] [Ajmain Naqib]
