@@ -1,0 +1,29 @@
+{
+  "backupMySql": "False",
+  "backupDir": "True",
+  "numberOfBackups" : 10,
+  "ftp":{
+    "host": "INSERT FTP URL HERE",
+  "username": "INSERT FTP USERNAME HERE",
+  "password": "INSERT FTP PASSWORD HERE",
+    "backupDir" : "INSERT FTP DIRECTORY HERE"
+  },
+
+"mysql":{
+  "username" : "INSERT MYSQL USERNAME HERE",
+  "password" : "INSERT MYSQL PASSWORD HERE"
+},
+
+  "includeDir" : [
+    "/var/www/"],
+
+  "excludeDir":[
+              "/var/www/tmp*",
+    "*/.git/*",
+    "*/tmp/*",
+  ],
+
+
+  "deploymentDir" : "/var/ftpDeployment/"
+
+}
