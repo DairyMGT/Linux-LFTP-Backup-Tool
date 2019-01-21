@@ -99,3 +99,7 @@
 2018-11-26 23:25:06,220 - __main__ - INFO - Files to remove: 20181126_mysqlDump.sql
 2018-11-26 23:25:06,220 - __main__ - INFO - Reached Deployment Stage. Can execute now.
 2018-11-26 23:25:06,220 - __main__ - INFO - executing: lftp -u 'vcabrera@wisc.edu,Dairymgt#@!1' ftp.box.com -e 'mkdir/DairyMgt_Backups; cd /DairyMgt_Backups; put /var/boxBackupDeployment/sqlDumps/20181126_mysqlDump.sql; rm 20181126_mysqlDump.sql; '
+2019-01-21 09:32:03,178 - __main__ - INFO - 
+2019-01-21 09:32:03,178 - __main__ - INFO - Starting logging!
+2019-01-21 09:33:37,366 - __main__ - INFO - 
+2019-01-21 09:33:37,366 - __main__ - INFO - Starting logging!
