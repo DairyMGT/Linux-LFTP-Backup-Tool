@@ -46,9 +46,11 @@ def deployCommand(command):
     # logger.info("FTP responsone: "+ sysResponse)
 
 
+dirname = os.path.dirname(__file__)
+configFile = os.path.join(dirname, 'config.json')
 
 # read from config
-with open('config.json') as json_data_file:
+with open(configFile) as json_data_file:
     configData = json.load(json_data_file)
 
 backupMySql = (configData["backupMySql"])
